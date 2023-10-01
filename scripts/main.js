@@ -19,8 +19,10 @@ gameBoard = function () {
         gameArray[x,y] = playingSymbol;
         console.table(gameArray);
     }
-
+    return{
+        play
+    }
 }()
 
-playerFactory(Tilen, -1);
+playerFactory("Tilen", -1);
 gameBoard.play(0,0,-1);

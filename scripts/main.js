@@ -16,8 +16,13 @@ gameBoard = function () {
     }
 
     function play(x,y,playingSymbol) {
-        gameArray[x,y] = playingSymbol;
-        console.table(gameArray);
+        if (!gameArray[x][y]) {
+            gameArray[x][y] = playingSymbol;
+            console.table(gameArray);
+        }
+        else(
+            console.log("Failed!")
+        )
     }
     return{
         play
@@ -25,4 +30,5 @@ gameBoard = function () {
 }()
 
 playerFactory("Tilen", -1);
+gameBoard.play(0,0,-1);
 gameBoard.play(0,0,-1);

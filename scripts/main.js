@@ -27,10 +27,20 @@ gameBoard = function () {
         console.log(gameTable);
         for (let i = 0; i < gameArray.length; i++) {
             let row = gameTable.insertRow(i);
-            console.log("I'm a row");
             for (let j = 0; j < gameArray.length; j++) {
-                let cell = row.insertCell(j);
-                cell.innerText = " ";
+                if (gameArray[i][j] == -1) {
+                    let cell = row.insertCell(j);
+                    cell.innerText = "O";
+                }
+                else if (gameArray[i][j] == 1) {
+                    let cell = row.insertCell(j);
+                    cell.innerText = "X";
+                }
+                else{
+                    let cell = row.insertCell(j);
+                    cell.innerText = "\u00A0"; 
+                }
+
             }
         }
     }
@@ -42,5 +52,5 @@ gameBoard = function () {
 
 playerFactory("Tilen", -1);
 gameBoard.play(0, 0, -1);
-gameBoard.play(0, 0, -1);
+gameBoard.play(2, 1, 1);
 gameBoard.drawGame();

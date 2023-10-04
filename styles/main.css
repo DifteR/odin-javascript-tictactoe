@@ -1,0 +1,11 @@
+#game-table{
+    position: absolute;
+    background-color: red;
+    height: 20vw;
+    width: 20vw;
+}
+td{
+    width: 6vw;
+    font-size: 300%;
+    text-align: center;
+}

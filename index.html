@@ -1,13 +1,18 @@
 <!DOCTYPE html>
+<style>
+    table, td {
+        border: 1px solid black;
+    }
+</style>
 <html lang="en">
 <head>
-    <script src="/scripts/main.js"></script>
+    <script src="/scripts/main.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <div "input-container">
+    <div id="input-container">
         <label>Player 1 name: </label>
         <input type="text" name="Player1Name" id="Player1Name">
         <label>Player 2 name: </label>
@@ -15,6 +20,8 @@
         <input type="button" value="Start game!">
     </div>
     <div id="game-container">
+        <table id="game-table">
+        </table>
     </div>
 </body>
 </html>

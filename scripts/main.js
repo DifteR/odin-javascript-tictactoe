@@ -28,16 +28,15 @@ gameBoard = function () {
         for (let i = 0; i < gameArray.length; i++) {
             let row = gameTable.insertRow(i);
             for (let j = 0; j < gameArray.length; j++) {
+                let cell = row.insertCell(j);
+                cell.setAttribute("id", `pos[${i}][${j}]`);
                 if (gameArray[i][j] == -1) {
-                    let cell = row.insertCell(j);
                     cell.innerText = "O";
                 }
                 else if (gameArray[i][j] == 1) {
-                    let cell = row.insertCell(j);
                     cell.innerText = "X";
                 }
                 else{
-                    let cell = row.insertCell(j);
                     cell.innerText = "\u00A0"; 
                 }
 

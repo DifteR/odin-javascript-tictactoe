@@ -24,6 +24,7 @@ gameBoard = function () {
     }
     function drawGame() {
         let gameTable = document.getElementById("game-table");
+        gameTable.innerHTML="";
         console.log(gameTable);
         for (let i = 0; i < gameArray.length; i++) {
             let row = gameTable.insertRow(i);
@@ -42,6 +43,14 @@ gameBoard = function () {
 
             }
         }
+        gameTable.addEventListener("click", function (event) {
+            if (event.target.tagName === "TD") {
+                var cellID = event.target.id;
+                console.table(cellID);
+                play(cellID.charAt(4), cellID.charAt(7), -1);
+                drawGame();
+            }
+        })
     }
     return {
         play,

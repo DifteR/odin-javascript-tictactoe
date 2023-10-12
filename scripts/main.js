@@ -8,22 +8,38 @@ function playerFactory(name, playingSymbol) {
 }
 
 gameBoard = function () {
-    var gameArray = new Array(3);
+    let playingSymbol = -1;
+    let gameTable = document.getElementById("game-table");
+    let gameArray = new Array(3);
     for (var i = 0; i < 3; i++) {
         gameArray[i] = new Array(3);
     }
 
-    function play(x, y, playingSymbol) {
+    function play(x, y) {
+        console.log(gameArray[x][y]);
         if (!gameArray[x][y]) {
             gameArray[x][y] = playingSymbol;
             console.table(gameArray);
+            switch (playingSymbol) {
+                case -1:
+                    playingSymbol = 1;
+                    break;
+                    console.log("I'm here");
+                case 1: 
+                    console.log("I'm here2");
+                    playingSymbol = -1;
+                    break;
+                default:
+                    alert("Something went wrong");
+                    break;
+            }
         }
         else {
             console.log("failed");
         }
     }
     function drawGame() {
-        let gameTable = document.getElementById("game-table");
+        
         gameTable.innerHTML="";
         console.log(gameTable);
         for (let i = 0; i < gameArray.length; i++) {
@@ -43,22 +59,23 @@ gameBoard = function () {
 
             }
         }
-        gameTable.addEventListener("click", function (event) {
-            if (event.target.tagName === "TD") {
-                var cellID = event.target.id;
-                console.table(cellID);
-                play(cellID.charAt(4), cellID.charAt(7), -1);
-                drawGame();
-            }
-        })
     }
+    gameTable.addEventListener("click", function (event) {
+        if (event.target.tagName === "TD") {
+            var cellID = event.target.id;
+            console.table(cellID);
+            play(cellID.charAt(4), cellID.charAt(7));
+            drawGame();
+        }
+    });
+    playerFactory("Tilen", -1)
     return {
         play,
         drawGame //must remove, just for testing
     }
 }()
 
-playerFactory("Tilen", -1);
-gameBoard.play(0, 0, -1);
-gameBoard.play(2, 1, 1);
+playerFactory("Tilen");
+gameBoard.play(0, 0);
+gameBoard.play(2, 1);
 gameBoard.drawGame();

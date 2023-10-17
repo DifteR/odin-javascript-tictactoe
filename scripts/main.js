@@ -72,11 +72,7 @@ gameBoard = function () {
     
     function checkWinnerHorizontal() {
         for (let x = 0; x < gameArray.length; x++) {
-            console.log(gameArray[x][0]);
-            console.log(gameArray[x][1]);
-            console.log(gameArray[x][2]);
             if (gameArray[x][0] && gameArray[x][0] === gameArray[x][1] && gameArray[x][1] === gameArray[x][2]) {
-                console.log("I'm here");
                 alert("We have a winner");
             }
         }

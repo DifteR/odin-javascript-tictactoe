@@ -19,15 +19,14 @@ gameBoard = function () {
         console.log(gameArray[x][y]);
         if (!gameArray[x][y]) {
             gameArray[x][y] = playingSymbol;
-            console.table(gameArray);
             switch (playingSymbol) {
                 case -1:
                     playingSymbol = 1;
+                    checkWinnerHorizontal();
                     break;
-                    console.log("I'm here");
                 case 1: 
-                    console.log("I'm here2");
                     playingSymbol = -1;
+                    checkWinnerHorizontal();
                     break;
                 default:
                     alert("Something went wrong");
@@ -37,6 +36,8 @@ gameBoard = function () {
         else {
             console.log("failed");
         }
+        drawGame();
+        
     }
     function drawGame() {
         
@@ -68,6 +69,19 @@ gameBoard = function () {
             drawGame();
         }
     });
+    
+    function checkWinnerHorizontal() {
+        for (let x = 0; x < gameArray.length; x++) {
+            console.log(gameArray[x][0]);
+            console.log(gameArray[x][1]);
+            console.log(gameArray[x][2]);
+            if (gameArray[x][0] && gameArray[x][0] === gameArray[x][1] && gameArray[x][1] === gameArray[x][2]) {
+                console.log("I'm here");
+                alert("We have a winner");
+            }
+        }
+    }
+
     playerFactory("Tilen", -1)
     return {
         play,
@@ -78,4 +92,3 @@ gameBoard = function () {
 playerFactory("Tilen");
 gameBoard.play(0, 0);
 gameBoard.play(2, 1);
-gameBoard.drawGame();

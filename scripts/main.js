@@ -22,11 +22,9 @@ gameBoard = function () {
             switch (playingSymbol) {
                 case -1:
                     playingSymbol = 1;
-                    checkWinnerHorizontal();
                     break;
                 case 1: 
                     playingSymbol = -1;
-                    checkWinnerHorizontal();
                     break;
                 default:
                     alert("Something went wrong");
@@ -37,6 +35,9 @@ gameBoard = function () {
             console.log("failed");
         }
         drawGame();
+        checkWinnerHorizontal();
+        checkWinnerVertcal();
+        checkWinnerDiagonal();
         
     }
     function drawGame() {
@@ -70,9 +71,22 @@ gameBoard = function () {
         }
     });
     
+    function checkWinnerDiagonal() {
+        if (gameArray[1][1] && gameArray[1][1] == gameArray[0][0] && gameArray[1][1] == gameArray[2][2] || gameArray[1][1] &&  gameArray[1][1] == gameArray[2][0] && gameArray[1][1] == gameArray[0][2]) {
+            alert("We have a winner");
+        }
+    }
+
     function checkWinnerHorizontal() {
         for (let x = 0; x < gameArray.length; x++) {
             if (gameArray[x][0] && gameArray[x][0] === gameArray[x][1] && gameArray[x][1] === gameArray[x][2]) {
+                alert("We have a winner");
+            }
+        }
+    }
+    function checkWinnerVertcal() {
+        for (let y = 0; y < gameArray.length; y++) {
+            if (gameArray[0][y] && gameArray[0][y] === gameArray[1][y] && gameArray[1][y] === gameArray[2][y]) {
                 alert("We have a winner");
             }
         }
